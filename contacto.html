@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Talleres MORAD</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            background-color: #000;
+            transition: top 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .section {
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .section.scrolled {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .contact-form {
+            background-color: rgba(0, 0, 0, 0.7);
+            border:2px solid #fff;!important
+            padding: 30px;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .contact-form h2 {
+            color: #fff;
+        }
+
+        .contact-form label {
+            color: #fff;
+        }
+
+        .contact-form .btn-primary {
+            background-color: #7FFF00;
+            /* Color verde fluorescente */
+            border-color: #7FFF00;
+            /* Color verde fluorescente */
+        }
+
+        .contact-form .btn-primary:hover {
+            background-color: #76EE00;
+            /* Color verde fluorescente más oscuro */
+            border-color: #76EE00;
+            /* Color verde fluorescente más oscuro */
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Estilos para el H1 dentro del div */
+        header.section h1 {
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+        }
+
+        /* Estilos para el contenedor del botón y el icono */
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .whatsapp-icon {
+            margin-left: 10px;
+            width: 50px;
+            /* Ajusta el tamaño del icono */
+            height: 50px;
+            /* Ajusta el tamaño del icono */
+        }
+
+        /* Media Queries */
+        @media (max-width: 1366px) {
+            .contact-form {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 15px;
+            }
+
+            header.section h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 10px;
+            }
+
+            header.section h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" width="100" height="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<header class="section">
+    <div>
+        <h1>Contacto</h1>
+    </div>
+</header>
+
+<section class="container my-5">
+    <div class="contact-form">
+        <h2>Contáctanos</h2>
+        <form action="enviar_correo.php" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad.%20Nos%20comprometemos%20a%20proteger%20tu%20privacidad%20según%20la%20LOPDGDD%20y%20el%20RGPD.%20No%20almacenamos%20tus%20datos%20personales%20y%20solo%20usamos%20los%20mensajes%20de%20esta%20conversación%20para%20prestarte%20nuestros%20servicios.%20Puedes%20consultar%20nuestra%20política%20de%20privacidad%20completa%20aquí:%20https://talleresmoradmecanica.es/terminos-y-condiciones-y-politica-de-privacidad.html" target="_self">
+                    <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" width="40" height="40" class="whatsapp-icon">
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    window.onscroll = function () {
+        let sections = document.querySelectorAll('.section');
+        let scrollPosition = window.pageYOffset;
+
+        sections.forEach((section) => {
+            let sectionTop = section.offsetTop - 50;
+            if (scrollPosition >= sectionTop) {
+                section.classList.add('scrolled');
+            } else {
+                section.classList.remove('scrolled');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        const navbar = document.querySelector('.navbar');
+
+        const headerHeight = header.offsetHeight;
+        navbar.style.top = `${headerHeight}px`;
+    });
+</script>
+
+
+
+
+
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row text-center text-md-left align-items-center">
+        
+        <!-- Primera columna: Dirección y Teléfono -->
+        <div class="col-md-4 mb-3 mb-md-0">
+          <p class="mb-1">Dirección: Calle de la Dalia, 39 - 52006 Melilla</p>
+          <p class="mb-0">Teléfono: +34 699883683</p>
+        </div>
+        
+        <!-- Segunda columna: Icono de WhatsApp (Opcional) -->
+        <div class="col-md-4 text-center mb-3 mb-md-0">
+          <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad..." target="_self">
+            <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" class="img-fluid" style="width: 50px; height: 50px;">
+          </a>
+        </div>
+  
+        <!-- Tercera columna: Correo Electrónico -->
+        <div class="col-md-4 text-md-right">
+          <p class="mb-0">Correo electrónico: talleresmoradmelilla@hotmail.com</p>
+        </div>
+      </div>
+  
+      <!-- Marca y créditos -->
+      <div class="row mt-3">
+        <div class="col text-center">
+          <p class="mb-0">2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+
+
+
+
+
+
+</body>
+
+</html>
