@@ -1,45 +1,80 @@
 <?php
+include 'db.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $telefono = $_POST['telefono'];
-    $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
-    $servicio = $_POST['servicio'];
+    $nombre = htmlspecialchars(trim($_POST['nombre']));
+    $telefono = htmlspecialchars(trim($_POST['telefono']));
+    $fecha = htmlspecialchars(trim($_POST['fecha']));
+    $hora = htmlspecialchars(trim($_POST['hora']));
+    $servicio = htmlspecialchars(trim($_POST['servicio']));
 
-    // Mensaje de WhatsApp
-    $mensaje = "Nueva cita agendada:\nNombre: $nombre\nTeléfono: $telefono\nFecha: $fecha\nHora: $hora\nServicio: $servicio";
+    // Validaciones
+    if (empty($nombre) || empty($telefono) || empty($fecha) || empty($hora) || empty($servicio)) {
+        echo "Todos los campos son obligatorios.";
+        exit();
+    }
 
-    // URL de la API de WhatsApp
-    $telefonoDestino = '34699883683'; // Número de teléfono con el código de país
-    $url = "https://api.whatsapp.com/send?phone=$telefonoDestino&text=" . urlencode($mensaje);
+    if (!preg_match("/^[a-zA-Z\s]+$/", $nombre)) {
+        echo "El nombre solo puede contener letras y espacios.";
+        exit();
+    }
 
-    echo <<<HTML
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                title: 'Cita Agendada',
-                text: 'Su cita ha sido agendada con éxito.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = '$url';
-            });
-        });
-    </script>
+    if (!preg_match("/^[0-9]{9}$/", $telefono)) {
+        echo "El teléfono debe contener 9 dígitos.";
+        exit();
+    }
+
+    $sql = "INSERT INTO citas (nombre, telefono, fecha, hora, servicio) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $nombre, $telefono, $fecha, $hora, $servicio);
+
+    if ($stmt->execute()) {
+        $mensaje = "NUEVA CITA AGENDADA\n"
+            . "-----------------\n"
+            . "Nombre: " . $nombre . "\n"
+            . "Teléfono: " . $telefono . "\n"
+            . "Fecha: " . $fecha . "\n"
+            . "Hora: " . $hora . "\n"
+            . "Servicio: " . $servicio;
+
+        $mensaje_codificado = urlencode($mensaje);
+        $whatsapp_url = "https://api.whatsapp.com/send?phone=34699883683&text=$mensaje_codificado";
+
+        echo <<<HTML
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Procesando...</title>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    title: 'Cita Agendada',
+                    text: 'Su cita ha sido agendada con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Continuar a WhatsApp'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '$whatsapp_url';
+                    }
+                });
+            </script>
+        </body>
+        </html>
 HTML;
-    exit();
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,7 +262,6 @@ HTML;
         }
     </style>
 </head>
-
 <body>
 <div class="page-container">
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -339,6 +373,4 @@ HTML;
     }
 </script>
 </body>
-
 </html>
-
