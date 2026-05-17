@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Talleres MORAD</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            background-color: #000;
+            transition: top 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .section {
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .section.scrolled {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .about-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 30px; /* Padding inicial */
+            color: #fff;
+            margin: 0 20px; /* Margen lateral */
+        }
+
+        .about-container h2 {
+            color: #fff;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1366px) {
+            .about-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                padding: 15px;
+                margin: 0 10px; /* Reducir margen lateral */
+            }
+
+            header.section h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-container {
+                padding: 10px;
+                margin: 0 5px; /* Reducir margen lateral */
+            }
+
+            header.section h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" width="100" height="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<header class="section">
+    <div>
+        <h1>Sobre Nosotros</h1>
+    </div>
+</header>
+
+<section class="container my-5">
+    <div class="about-container"> 
+        <h2 class="text-center">Talleres Morad Melilla: Un compromiso con la excelencia</h2>
+        <p>En Talleres Morad Melilla, la pasión por el automóvil se traduce en un compromiso inquebrantable con la calidad y la satisfacción del cliente. Nuestro decálogo de servicio refleja los valores que guían cada una de nuestras acciones:</p>
+        <ol>
+            <li>Experiencia y profesionalidad: Contamos con un equipo de mecánicos altamente cualificados y con amplia experiencia en el sector.</li>
+            <li>Diagnóstico preciso: Utilizamos tecnología de vanguardia para identificar con precisión cualquier problema en su vehículo.</li>
+            <li>Reparaciones garantizadas: Ofrecemos garantía en todas nuestras reparaciones, asegurando su tranquilidad.</li>
+            <li>Transparencia y honestidad: Le informamos detalladamente sobre el estado de su vehículo y las reparaciones necesarias.</li>
+            <li>Precios competitivos: Ofrecemos tarifas justas y transparentes, sin sorpresas.</li>
+            <li>Puntualidad y eficiencia: Cumplimos con los plazos acordados, valorando su tiempo.</li>
+            <li>Atención personalizada: Le brindamos un trato cercano y amable, resolviendo todas sus dudas.</li>
+            <li>Compromiso con el medio ambiente: Implementamos prácticas responsables para minimizar nuestro impacto ambiental.</li>
+            <li>Mejora continua: Buscamos constantemente la excelencia en nuestros servicios, innovando y adaptándonos a sus necesidades.</li>
+            <li>Confianza y fidelidad: Trabajamos para construir una relación de confianza a largo plazo con nuestros clientes.</li>
+        </ol>
+        <p class="text-center">En Talleres Morad Melilla, su vehículo está en las mejores manos. Confíe en nosotros para el mantenimiento y reparación de su automóvil.</p>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    window.onscroll = function() {
+        let sections = document.querySelectorAll('.section');
+        let scrollPosition = window.pageYOffset;
+
+        sections.forEach((section) => {
+            let sectionTop = section.offsetTop - 50;
+            if (scrollPosition >= sectionTop) {
+                section.classList.add('scrolled');
+            } else {
+                section.classList.remove('scrolled');
+            }
+        });
+    };
+</script>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row text-center text-md-left align-items-center">
+            <!-- Primera columna: Dirección y Teléfono -->
+            <div class="col-md-4 mb-3 mb-md-0">
+                <p class="mb-1">Dirección: Calle de la Dalia, 39 - 52006 Melilla</p>
+                <p class="mb-0">Teléfono: +34 699883683</p>
+            </div>
+            
+            <!-- Segunda columna: Icono de WhatsApp (Opcional) -->
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad..." target="_self">
+                    <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" class="img-fluid" style="width: 50px; height: 50px;">
+                </a>
+            </div>
+      
+            <!-- Tercera columna: Correo Electrónico -->
+            <div class="col-md-4 text-md-right">
+                <p class="mb-0">Correo electrónico: talleresmoradmelilla@hotmail.com</p>
+            </div>
+        </div>
+      
+        <!-- Marca y créditos -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <p class="mb-0">2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>

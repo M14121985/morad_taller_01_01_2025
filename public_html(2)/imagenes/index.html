@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talleres MORAD</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="msvalidate.01" content="37CF82026ABD2E4178E0C07E231464FB" />
+    <meta name="google-site-verification" content="JoHuYqAW2yyt0edwi4EIu1qAyCxIj9DGAQAo3tHR_G4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="imagenes/site.webmanifest">
+    <link rel="mask-icon" href="imagenes/safari-pinned-tab.svg" color="#5bbad5">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+
+   
+
+
+
+
+    <style>
+        /* Estilos generales del cuerpo de la página */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Asegura que el contenedor ocupe al menos la altura de la ventana */
+        }
+
+        body {
+            padding-top: 100px;
+            background-color: #000;
+            color: #fff;
+            /* Aplicar la imagen de fondo al body */
+            background-image: url('imagenes/fondo.jpg');
+            /* Imagen de fondo diferente */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            /* Definir la fuente para el body */
+        }
+
+        /* Estilos del pie de página */
+        footer {
+            margin-top: auto;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            height: 150px;
+            /* Ajusta la altura del footer */
+            background-color: #222;
+            /* Color de fondo del footer */
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .email-info {
+            text-align: right;
+        }
+
+        .marca {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            position: absolute;
+            /* Posiciona el div de la marca absolutamente */
+            bottom: 0;
+            /* Coloca el div de la marca al pie del footer */
+            left: 0;
+            /* Coloca el div de la marca al centro del footer */
+            width: 100%;
+            /* Establece el ancho del div de la marca al 100% */
+        }
+
+        /* Estilos para secciones genéricas */
+        .section {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 0;
+            /* Espaciado superior e inferior para las secciones */
+        }
+
+        /* Estilos para el mapa (si lo hubiera) */
+        #map {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        /* Eliminamos el margen superior del contenido principal */
+        .contenido-principal {
+            margin-top: 0;
+        }
+
+        /* Estilos de la barra de navegación (navbar) */
+        .navbar {
+            background-color: transparent !important;
+            backdrop-filter: blur(5px);
+            /* Eliminamos position: fixed */
+            margin-top: auto;
+            /* Empujamos el navbar hacia abajo */
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            margin-left: 0;
+        }
+
+        .navbar-brand img {
+            height: 200px;
+            /* Tamaño del logo ajustado */
+            width: auto;
+            object-fit: contain;
+            margin-top: -90px;
+            /* Ajusta este valor para subir o bajar el logo */
+        }
+
+        .navbar-nav {
+            margin-left: 100px;
+            /* Ajusta este valor según el desplazamiento deseado */
+            margin-right: auto;
+        }
+
+        .navbar-nav .nav-link {
+            /* ... (otros estilos) ... */
+            transition: all 0.3s ease-in-out;
+            padding: 0.5rem 1rem;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        /* Efecto al pasar el ratón sobre los enlaces del menú */
+        .navbar-nav .nav-link:hover {
+            transform: scale(1.05) rotateY(10deg) rotateX(10deg);
+            color: #ff4d00;
+            /* Color de texto naranja en hover */
+            text-shadow:
+                    0 0 80px rgb(255, 77, 0),
+                        /* Sombra más grande */
+                    0 0 60px rgb(255, 77, 0),
+                    0 0 30px rgb(255, 77, 0);
+            box-shadow: 0 0 30px rgb(255, 77, 0);
+            /* Sombra más grande */
+        }
+
+        /* Aumenta el tamaño de la sombra */
+
+
+        .nav-link {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        /* Estilos del encabezado (header) */
+        .header-container {
+            /* Elimina la propiedad background y height */
+            padding-bottom: 60px;
+            /* Ajusta este valor si es necesario */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* Alinea el contenido al inicio del header */
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 0px;
+            flex-grow: 1;
+            /* Permite que el header se expanda para ocupar el espacio disponible */
+        }
+
+        .content {
+            /*  Asegura que el contenido principal no se superponga con el footer */
+            flex-grow: 0;
+        }
+
+        .welcome-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            /* Para centrar verticalmente */
+            background-color: transparent;
+            padding: 20px;
+            z-index: 1;
+            /* Asegura que el mensaje esté delante de la imagen */
+        }
+ /* Estilos para el div animado */
+ #animatedDiv {
+    background-color: transparent;
+    color: #ffffff; /* Color blanco más brillante */
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+    padding: 1vw 2vw; /* Ajustar el padding */
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 2vw !important; /* Ajustar el tamaño de la fuente */
+    font-weight: 900 !important; /* Aumentar grosor a la fuente */
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+    position: relative;
+    margin-top: 5cm; /* Ajustar la posición hacia abajo */
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.9); /* Sombra blanca más grande */
+}
+
+/* Efecto de levantar al pasar el mouse */
+#animatedDiv:hover {
+    transform: translateY(-10px); /* Levantar la tarjeta */
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 2); /* Sombra blanca más grande */
+}
+    /* Efectos adicionales */
+    #animatedDiv span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+    }
+
+    /* Efecto de hover */
+    #animatedDiv span:hover {
+        transform: rotateY(1deg) rotateX(3deg) scale(1.02);
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    #animatedDiv span::before,
+    #animatedDiv span::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    #animatedDiv span::before {
+        transform: translateZ(-10px);
+    }
+
+    #animatedDiv span::after {
+        transform: translateZ(10px);
+    }
+    .service-card {
+    background-color: transparent;
+    color: #ffffff; /* Color blanco más brillante */
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+    padding: 1vw 2vw; /* Ajustar el padding */
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 2vw; /* Ajustar el tamaño de la fuente */
+    font-weight: 900; /* Aumentar grosor a la fuente */
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+    position: relative;
+    margin: 1vw; /* Ajustar el margen */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5); /* Sombra blanca de la tarjeta */
+}
+
+/* Efecto de levantar al pasar el mouse */
+.service-card:hover {
+    transform: translateY(-10px); /* Levantar la tarjeta */
+    box-shadow: 0 16px 32px rgba(255, 255, 255, 2); /* Sombra blanca más grande */
+    color: #ff4d00; /* Cambiar el color del texto a naranja */
+    text-shadow: 0 0 80px #ff4d00, 0 0 60px #ff4d00, 0 0 30px #ff4d00; /* Sombra naranja brillante */
+}
+
+
+        /*faros coche*/
+
+        /*faros coche*/
+/*
+        .contenedor-faros {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.faro {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    border-radius: 40%;
+    background: radial-gradient(circle at center, white, rgba(255, 255, 255, 0.2));
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.faro-izquierdo {
+    top: 51vh;
+    position: fixed;
+    left: var(--faro-izquierdo-left);
+    animation: flash-izquierdo 0.5s linear infinite;
+}
+
+.faro-derecho {
+    top: 51vh;
+    position: fixed;
+    right: var(--faro-derecho-right);
+    animation: flash-derecho 0.5s linear infinite;
+}
+
+@keyframes flash-izquierdo {
+    0% { box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.8); }
+    50% { box-shadow: 0 0 80px 50px rgba(255, 255, 255, 1); }
+    100% { box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes flash-derecho {
+    0% { box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.8); }
+    50% { box-shadow: 0 0 80px 50px rgba(255, 255, 255, 1); }
+    100% { box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.8); }
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 440px) and (max-height: 743px) {
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 0.02%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 50%; /* Ajuste para el faro derecho */
+        left: 75%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* iPhone 12 mini, iPhone 13 mini */
+@media (max-width: 360px) and (max-height: 780px) { 
+    .faro-izquierdo {
+        top: 48%; /* Ajuste para el faro izquierdo */
+        left: -8%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 48%; /* Ajuste para el faro derecho */
+        left: 80%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* iPhone 12/12 Pro, iPhone 13/13 Pro, iPhone 14/14 Plus, iPhone 15/15 Plus */
+@media (max-width: 390px) and (max-height: 844px) { 
+    .faro-izquierdo {
+        top: 48%; /* Ajuste para el faro izquierdo */
+        left: -5%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 48%; /* Ajuste para el faro derecho */
+        left: 80%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* iPhone 12 Pro Max, iPhone 13 Pro Max, iPhone 14 Pro Max, iPhone 15 Pro Max */
+@media (max-width: 428px) and (max-height: 926px) { 
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: -8%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 50%; /* Ajuste para el faro derecho */
+        left: 80%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* iPhone 14 Pro, iPhone 15 Pro */
+@media (max-width: 393px) and (max-height: 852px) { 
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: -8%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 50%; /* Ajuste para el faro derecho */
+        left: 79%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Samsung Galaxy *//* Galaxy S21, S23 */
+@media (max-width: 393px) and (max-height: 854px) { 
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: -8%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 50%; /* Ajuste para el faro derecho */
+        left: 79%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Galaxy S21 Ultra, Galaxy S22 Ultra, Galaxy S23 Ultra */
+@media (max-width: 412px) and (max-height: 914px) { 
+    .faro-izquierdo {
+        top: 43%; /* Ajuste para el faro izquierdo */
+        left: 22%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 43%; /* Ajuste para el faro derecho */
+        left: 78%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Galaxy S22 */
+@media (max-width: 412px) and (max-height: 877px) { 
+    .faro-izquierdo {
+        top: 43%; /* Ajuste para el faro izquierdo */
+        left: 22%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 43%; /* Ajuste para el faro derecho */
+        left: 78%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Xiaomi */
+@media (max-width: 393px) and (max-height: 869px) { /* Xiaomi 12 */
+    .faro-izquierdo {
+        top: 44%; /* Ajuste para el faro izquierdo */
+        left: 23%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 44%; /* Ajuste para el faro derecho */
+        left: 77%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Xiaomi 12 Pro */
+@media (max-width: 412px) and (max-height: 912px) { 
+    .faro-izquierdo {
+        top: 43%; /* Ajuste para el faro izquierdo */
+        left: 22%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 43%; /* Ajuste para el faro derecho */
+        left: 78%; /* Ajuste para el faro derecho */
+    }
+}
+
+/* Ajustes para monitores */
+@media (max-width: 1366px) and (max-height: 768px) { /* 1366 x 768 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 20%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 72%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1920px) and (max-height: 1080px) { /* 1920 x 1080 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 22%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 74%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 2560px) and (max-height: 1440px) { /* 2560 x 1440 */
+    .faro-izquierdo {
+        top: 51%; /* Ajuste para el faro izquierdo */
+        left: 22%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 52%; /* Ajuste para el faro derecho */
+        left: 74%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 3840px) and (max-height: 2160px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 51%; /* Ajuste para el faro izquierdo */
+        left: 23%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 52%; /* Ajuste para el faro derecho */
+        left: 75%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1493px) and (max-height: 2160px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 19.5%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 75.5%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1293px) and (max-height: 2160px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 15%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51.05%; /* Ajuste para el faro derecho */
+        left: 79%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 913px) and (max-height: 1620px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 12%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 79%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1673px) and (max-height: 2926px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 50%; /* Ajuste para el faro izquierdo */
+        left: 12%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 83%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1846px) and (max-height: 2926px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 51%; /* Ajuste para el faro izquierdo */
+        left: 17%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 80%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1373px) and (max-height: 2926px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 51%; /* Ajuste para el faro izquierdo */
+        left: 6%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 90%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 3093px) and (max-height: 2926px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 51%; /* Ajuste para el faro izquierdo */
+        left: 23%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 52%; /* Ajuste para el faro derecho */
+        left: 75%; /* Ajuste para el faro derecho */
+    }
+}
+
+@media (max-width: 1780px) and (max-height: 2926px) { /* 3840 x 2160 */
+    .faro-izquierdo {
+        top: 50.5%; /* Ajuste para el faro izquierdo */
+        left: 16%; /* Ajuste para el faro izquierdo */
+    }
+    .faro-derecho {
+        top: 51%; /* Ajuste para el faro derecho */
+        left: 81%; /* Ajuste para el faro derecho */
+    }
+}
+*/
+/*fin faros*/
+
+        h1,
+        h2,
+        p {
+            color: #fff;
+        }
+
+        /* Estilos para el div animado */
+#animatedDiv {
+    background-color: transparent;
+    color: #ffffff; /* Color blanco más brillante */
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+    padding: 1vw 2vw;
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 30vw !important; /* Aumentar el tamaño de la fuente */
+    font-weight: 900 !important; /* Aumentar grosor a la fuente */
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+    position: relative;
+}
+
+/* Efectos adicionales */
+#animatedDiv span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+}
+
+/* Efecto de hover */
+#animatedDiv span:hover {
+    transform: rotateY(1deg) rotateX(3deg) scale(1.02);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+#animatedDiv span::before,
+#animatedDiv span::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#animatedDiv span::before {
+    transform: translateZ(-10px);
+}
+
+#animatedDiv span::after {
+    transform: translateZ(10px);
+}
+
+
+        /* Estilos para listas desordenadas */      
+        /* Estilos para listas desordenadas */
+        .list-unstyled {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .list-inline-item {
+    margin: 0.25vw;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    white-space: nowrap;
+    font-size: 20px; /* Ajusta el tamaño de fuente según tus necesidades */
+    font-weight: bold; /* Puedes usar valores como bold, 700, 800, 900 para diferentes grosores */
+}
+
+        .list-inline-item:hover {
+            transform: scale(1.05) rotateY(2deg);
+            color: #ff4d00;
+            /* Cambiar el color del texto al pasar el ratón */
+        }
+
+        .list-inline-item:hover span {
+            transform: translateY(-0.5px);
+        }
+
+        #animatedDiv:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.1);
+        }
+
+        .list-inline-item span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+
+        .list-inline-item a { 
+    color: inherit; /* Hereda el color del elemento padre */
+    text-decoration: none; /* Elimina el subrayado */
+    }
+
+
+
+        /* Estilos para los enlaces del menú de navegación */
+        /* Estilos para los enlaces del menú de navegación */
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            display: inline-block;
+            transform-style: preserve-3d;
+            margin-right: 20px;
+            padding: 0.5rem 1rem;
+            perspective: 1000px;
+            position: relative;
+            font-style: normal;
+            /* Cambiado a normal para que no sea itálica */
+        }
+
+        /* Efecto al pasar el ratón sobre los enlaces del menú */
+        .navbar-nav .nav-link:hover {
+            transform: scale(1.05) rotateY(10deg) rotateX(10deg);
+            color: #ff4d00;
+            /* Color de texto naranja en hover */
+            text-shadow: 0 0 30px rgb(255, 77, 0),
+                /* Iluminación naranja por dentro */
+            0 0 20px rgb(255, 77, 0),
+            0 0 10px rgb(255, 77, 0);
+            box-shadow: 0 0 10px rgb(255, 77, 0);
+        }
+
+        /* Añade pseudo-elementos para crear el efecto 3D */
+        .navbar-nav .nav-link::before,
+        .navbar-nav .nav-link::after {
+            content: attr(data-text);
+            /* Usa el mismo contenido del enlace */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateZ(-10px);
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar-nav .nav-link::after {
+            transform: translateZ(10px);
+            color: #fff;
+        }
+
+        /* Agrega margen superior al contenido principal */
+        .contenido-principal {
+            margin-top: 35vh;
+            /* Ajusta este valor para que coincida con la altura del header y el navbar */
+        }
+
+        /* Media queries para diseño responsivo */
+        /* Dispositivos pequeños (móviles) */
+        @media (max-width: 768px) {
+            #animatedDiv {
+                font-size: 4vw;
+                padding: 2vw 4vw;
+            }
+
+            .navbar-brand img {
+                height: 120px;
+                /* Ajusta el tamaño para móviles si es necesario */
+            }
+
+            .navbar-nav {
+                margin-left: 20px;
+            }
+
+            .header-container {
+                margin-top: 100px;
+            }}
+
+        /* Tablets */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            #animatedDiv {
+                font-size: 3vw;
+                padding: 1.5vw 3vw;
+            }
+
+            .navbar-brand img {
+                height: 180px;
+                /* Ajusta el tamaño para tablets */
+            }
+
+            .header-container {
+                margin-top: 120px;
+            }
+        }
+
+        /* Laptops */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            #animatedDiv {
+                font-size: 2.5vw;
+                padding: 1vw 2vw;
+            }
+
+            .navbar-brand img {
+                height: 220px;
+                /* Ajusta el tamaño para laptops */
+            }
+        }
+
+        /* Pantallas grandes */
+        @media (min-width: 1440px) {
+
+            /* Ajustes para pantallas grandes */
+            #animatedDiv {
+                font-size: 2vw;
+                /* Ajusta el tamaño de fuente si es necesario */
+            }
+        }
+
+        /* iPhone */
+        @media (max-width: 414px) {
+            body {
+                font-size: 14px;
+                /* Reduce el tamaño de fuente general */
+            }
+
+            .navbar-brand img {
+                height: 80px;
+                /* Reduce el tamaño del logo */
+            }
+
+            #animatedDiv {
+                font-size: 3vw;
+                /* Reduce el tamaño de fuente del div animado */
+                padding: 2vw 3vw;
+                /* Ajusta el padding */
+            }
+
+            .list-inline-item {
+                font-size: 12px;
+                /* Reduce el tamaño de fuente de los elementos de la lista */
+                margin: 0.3vw;
+                /* Ajusta el margen */
+            }
+
+            footer {
+                font-size: 12px;
+                /* Reduce el tamaño de fuente del footer */
+                padding: 10px;
+                /* Ajusta el padding */
+            }
+        }
+    </style>
+</head>
+
+<!--body-->
+
+<body>
+<div class="page-container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">
+            <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" width="100" height="100">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="servicios.html">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header-container">
+        <div class="contenedor-faros">
+            <div class="faro faro-izquierdo"></div>
+            <div class="faro faro-derecho"></div>
+        </div>
+        <div class="welcome-message">
+            <div id="animatedDiv" class="card" onmouseover="startAnimation()" onmouseleave="stopAnimation()">
+                <ul class="list-unstyled">
+                    <li class="list-inline-item">Bienvenidos a Talleres Morad<br>
+                        La mejor mecánica general en Melilla.</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <section class="container my-5 section">
+            <div class="p-4 rounded">
+                <h2 class="text-center">Servicios</h2>
+                <ul class="list-unstyled text-center">
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>D</span>IAGNOSIS DE TODAS LAS MARCAS</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>C</span>AMBIO DE ACEITE</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>D</span>ISTRIBUCIÓN</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>F</span>RENOS</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>M</span>ECÁNICA GENERAL</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="card service-card">
+                            <a href="servicios.html"><span>C</span>HAPA Y PINTURA</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+<!--footer-->
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+          <div class="row text-center text-md-left align-items-center">
+            
+            <!-- Primera columna: Dirección y Teléfono -->
+            <div class="col-md-4 mb-3 mb-md-0">
+              <p class="mb-1">Dirección: Calle de la Dalia, 39 - 52006 Melilla</p>
+              <p class="mb-0">Teléfono: +34 699883683</p>
+            </div>
+            
+            <!-- Segunda columna: Icono de WhatsApp (Opcional) -->
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+              <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad..." target="_self">
+                <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" class="img-fluid" style="width: 50px; height: 50px;">
+              </a>
+            </div>
+      
+            <!-- Tercera columna: Correo Electrónico -->
+            <div class="col-md-4 text-md-right">
+              <p class="mb-0">Correo electrónico: talleresmoradmelilla@hotmail.com</p>
+            </div>
+          </div>
+      
+          <!-- Marca y créditos -->
+          <div class="row mt-3">
+            <div class="col text-center">
+              <p class="mb-0">2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      
+    
+    
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+<!--ajuste posicion faros-->
+
+<!--
+<script>
+    function ajustarPosicionFaros() {
+        const contenedorFaros = document.querySelector('.contenedor-faros');
+        const anchoContenedor = contenedorFaros.offsetWidth;
+        const posicionIzquierda = anchoContenedor * 0.73; // Ajusta el valor según la posición en el diseño
+        const posicionDerecha = anchoContenedor * 0.72;  // Ajusta el valor según la posición en el diseño
+
+        // Actualiza las variables CSS con la posición calculada
+        document.documentElement.style.setProperty('--faro-izquierdo-left', posicionIzquierda + 'px');
+        document.documentElement.style.setProperty('--faro-derecho-right', posicionDerecha + 'px');
+    }
+
+    // Ejecuta la función al cargar la página y al redimensionar la ventana
+    window.addEventListener('load', ajustarPosicionFaros);
+    window.addEventListener('resize', ajustarPosicionFaros);
+</script>
+-->
+
+<script>
+    window.onscroll = function () {
+        let sections = document.querySelectorAll('.section');
+        let scrollPosition = window.pageYOffset;
+
+        sections.forEach((section) => {
+            let sectionTop = section.offsetTop - 50;
+            if (scrollPosition >= sectionTop) {
+                section.classList.add('scrolled');
+            } else {
+                section.classList.remove('scrolled');
+            }
+        });
+    };
+</script>
+<script>
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        const navbar = document.querySelector('.navbar');
+
+        const headerHeight = header.offsetHeight;
+        navbar.style.top = `${headerHeight}px`;
+    });
+</script>
+
+
+<!--animacion faros-->
+
+<script>function iniciarAnimacionFaros() {
+    const faros = document.querySelectorAll('.faro');
+    let contador = 0;
+
+    // Función para ejecutar la animación una vez
+    function animarFaros() {
+        faros.forEach(faro => {
+            faro.style.animationIterationCount = 1; // Ejecutar la animación una vez
+            faro.classList.remove('animando'); // Eliminar la clase para reiniciar la animación
+            void faro.offsetWidth; // Truco para forzar el reflow y reiniciar la animación
+            faro.classList.add('animando'); // Añadir la clase para iniciar la animación
+        });
+        contador++;
+
+        // Detener la animación después de 6 repeticiones
+        if (contador >= 6) {
+            clearInterval(intervalo);
+            // Repetir la animación cada 5 minutos
+            setInterval(iniciarAnimacionFaros, 5 * 60 * 1000); // 5 minutos en milisegundos
+        }
+    }
+
+    // Ejecutar la animación cada 2 segundos (duración de la animación)
+    let intervalo = setInterval(animarFaros, 2000);
+}
+
+// Iniciar la animación al cargar la página
+window.addEventListener('load', iniciarAnimacionFaros);
+
+</script>
+
+
+
+<!-- Div de Política de Cookies y sweet alert para que no se pisen implemnto logica juntos -->
+<!-- Div de Política de Cookies y sweet alert para que no se pisen implemnto logica juntos -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Verificar si el usuario ya ha aceptado las cookies
+      if (!document.cookie.includes("aceptarCookies=true")) {
+        // Mostrar el mensaje de cookies
+        const mensajeCookies = document.createElement('div');
+        mensajeCookies.innerHTML = `
+          <div id="mensajeCookies" style="position: fixed; bottom: 0; width: 100%; background-color: #333; color: #fff; padding: 10px; text-align: center;">
+            <span>Este sitio utiliza cookies para mejorar tu experiencia. </span>
+            <button id="btnAceptarCookies" style="background-color: #ffcc00; color: #000; border: none; padding: 10px; cursor: pointer;">Aceptar</button>
+          </div>
+        `;
+        document.body.appendChild(mensajeCookies);
+  
+        // Cuando el usuario acepta las cookies
+        document.getElementById('btnAceptarCookies').addEventListener('click', () => {
+          // Guardar la aceptación de las cookies
+          document.cookie = "aceptarCookies=true; path=/";
+          
+          // Eliminar el mensaje de cookies
+          document.body.removeChild(mensajeCookies);
+  
+          // Verificar si el SweetAlert ya se ha mostrado en esta sesión
+          if (!sessionStorage.getItem('sweetAlertMostrado')) {
+            // Mostrar el SweetAlert después de aceptar las cookies
+            Swal.fire({
+              title: '¡Bienvenido!',
+              imageUrl: 'imagenes/android-chrome-512x512.png',  // Cambia a la ruta de tu logo
+              imageWidth: 200,  // Ajusta el tamaño del logo
+              imageHeight: 200,
+              background: '#000000',  // Fondo negro
+              color: '#ffffff',  // Texto blanco
+              confirmButtonText: 'Iniciar',
+              confirmButtonColor: '#ffcc00',  // Botón de confirmación personalizado
+              showConfirmButton: true,
+              allowOutsideClick: false,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                // Reproducir el sonido del motor al confirmar
+                let audio = new Audio('motor_v8.mp3');  // Verifica que la ruta del archivo sea correcta
+                audio.play().catch(error => {
+                  console.error("Error al reproducir el audio:", error);
+                });
+              }
+            });
+            // Marcar que el SweetAlert ya se ha mostrado en esta sesión
+            sessionStorage.setItem('sweetAlertMostrado', 'true');
+          }
+        });
+      } else {
+        // Si ya aceptó las cookies y no ha visto el SweetAlert en esta sesión
+        if (!sessionStorage.getItem('sweetAlertMostrado')) {
+          // Mostrar el SweetAlert solo la primera vez que entra en la página de inicio en esta sesión
+          Swal.fire({
+            title: '¡Bienvenido!',
+            imageUrl: 'imagenes/android-chrome-512x512.png',  // Cambia a la ruta de tu logo
+            imageWidth: 200,  // Ajusta el tamaño del logo
+            imageHeight: 200,
+            background: '#000000',  // Fondo negro
+            color: '#ffffff',  // Texto blanco
+            confirmButtonText: 'Iniciar',
+            confirmButtonColor: '#ffcc00',  // Botón de confirmación personalizado
+            showConfirmButton: true,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Reproducir el sonido del motor al confirmar
+              let audio = new Audio('motor_v8.mp3');  // Verifica que la ruta del archivo sea correcta
+              audio.play().catch(error => {
+                console.error("Error al reproducir el audio:", error);
+              });
+            }
+          });
+          // Marcar que el SweetAlert ya se ha mostrado en esta sesión
+          sessionStorage.setItem('sweetAlertMostrado', 'true');
+        }
+      }
+    });
+  </script>
+  
+
+  
+
+</body>
+</html>

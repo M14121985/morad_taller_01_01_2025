@@ -1,0 +1,354 @@
+/* Estilos generales del cuerpo de la página */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos del pie de página */
+footer {
+    margin-top: auto;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    height: 150px;
+    background-color: #222;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+.email-info {
+    text-align: right;
+}
+
+.marca {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Estilos para secciones genéricas */
+.section {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Estilos para el mapa (si lo hubiera) */
+#map {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Eliminamos el margen superior del contenido principal */
+.contenido-principal {
+    margin-top: 0;
+}
+
+/* Estilos de la barra de navegación (navbar) */
+.navbar {
+    background-color: transparent !important;
+    backdrop-filter: blur(5px);
+    margin-top: auto;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    margin-left: 0;
+}
+
+.navbar-brand img {
+    height: 350px;
+    /* Ajusta el tamaño del logo */
+    width: auto;
+    object-fit: contain;
+    margin-top: -60px; /* Ajusta este valor para subir o bajar el logo */
+}
+
+.navbar-nav {
+    margin-left: 100px;
+    margin-right: auto;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+/* Estilos del encabezado (header) */
+header {
+    background: url('imagenes/logo morad 2.jpg') no-repeat center center;
+    background-position: center top;
+    background-size: cover;
+    padding-bottom: 20px;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+h1,
+h2,
+p {
+    color: #fff;
+}
+
+/* Estilos para un div animado */
+/* Contenedor del header */
+.header-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+/* Estilos para el div animado */
+#animatedDiv {
+    background-color: transparent;
+    color: #ffffff; /* Color blanco más brillante */
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+    padding: 1vw 2vw;
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 30vw ; /* Aumentar el tamaño de la fuente */
+    font-weight: 900 ; /* Aumentar grosor a la fuente */
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+    position: relative;
+}
+
+/* Efectos adicionales */
+#animatedDiv span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 80px #ff4d00; /* Sombra naranja brillante */
+}
+
+/* Efecto de hover */
+#animatedDiv span:hover {
+    transform: rotateY(1deg) rotateX(3deg) scale(1.02);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+#animatedDiv span::before,
+#animatedDiv span::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#animatedDiv span::before {
+    transform: translateZ(-10px);
+}
+
+#animatedDiv span::after {
+    transform: translateZ(10px);
+}
+
+
+/* Estilos para listas desordenadas */
+.list-unstyled {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-inline-item {
+    margin: 0.25vw;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.list-inline-item:hover {
+    transform: scale(1.05) rotateY(2deg);
+    color: #ff4d00;
+}
+
+.list-inline-item:hover span {
+    transform: translateY(-0.5px);
+}
+
+#animatedDiv:hover {
+    transform: rotateY(10deg) rotateX(10deg) scale(1.1);
+}
+
+.list-inline-item span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* Estilos para los enlaces del menú de navegación */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: inline-block;
+    transform-style: preserve-3d;
+    margin-right: 20px;
+    padding: 0.5rem 1rem;
+    perspective: 1000px;
+    position: relative;
+    font-style: normal;
+}
+
+/* Efecto al pasar el ratón sobre los enlaces del menú */
+.navbar-nav .nav-link:hover {
+    transform: scale(1.05) rotateY(10deg) rotateX(10deg);
+    color: #ff4d00;
+    text-shadow:
+            0 0 30px rgba(255, 77, 0, 0.5),
+            0 0 20px rgb(255, 77, 0),
+            0 0 10px rgb(255, 77, 0);
+    box-shadow: 0 0 10px rgb(255, 77, 0);
+}
+
+/* Añade pseudo-elementos para crear el efecto 3D */
+.navbar-nav .nav-link::before,
+.navbar-nav .nav-link::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateZ(-10px);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navbar-nav .nav-link::after {
+    transform: translateZ(10px);
+    color: #fff;
+}
+
+/* Agrega margen superior al contenido principal */
+.contenido-principal {
+    margin-top: 35vh;
+}
+
+/* Media queries para diseño responsivo */
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 768px) {
+    #animatedDiv {
+        font-size: 5vw;
+        padding: 3vw 5vw;
+    }
+
+    .navbar-brand img {
+        height: 150px;
+    }
+
+    .navbar-nav {
+        margin-left: 20px;
+    }
+
+    .header-container {
+        margin-top: 100px;
+    }
+
+    .list-inline-item {
+        margin: 0.5vw;
+    }
+}
+/* iPhone */
+@media (max-width: 414px) {
+    body {
+        font-size: 14px; /* Reduce el tamaño de fuente general */
+    }
+
+    .navbar-brand img {
+        height: 80px; /* Reduce el tamaño del logo */
+    }
+
+    #animatedDiv {
+        font-size: 3vw; /* Reduce el tamaño de fuente del div animado */
+        padding: 2vw 3vw; /* Ajusta el padding */
+    }
+
+    .list-inline-item {
+        font-size: 12px; /* Reduce el tamaño de fuente de los elementos de la lista */
+        margin: 0.3vw; /* Ajusta el margen */
+    }
+
+    footer {
+        font-size: 12px; /* Reduce el tamaño de fuente del footer */
+        padding: 10px; /* Ajusta el padding */
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #animatedDiv {
+        font-size: 4vw;
+        padding: 2vw 4vw;
+    }
+
+    .navbar-brand img {
+        height: 200px;
+    }
+
+    .header-container {
+        margin-top: 120px;
+    }
+}
+
+/* Laptops */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    #animatedDiv {
+        font-size: 3vw;
+        padding: 1.5vw 3vw;
+    }
+
+    .navbar-brand img {
+        height: 250px;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1440px) {
+    #animatedDiv {
+        font-size: 2vw;
+    }
+}
