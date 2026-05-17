@@ -165,83 +165,11 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Estilos Globales -->
+    <link rel="stylesheet" href="assets/css/estilos.css">
     
     <style>
-        :root {
-            --primary-color: #ff4d00;
-            --secondary-color: #1a1a1a;
-            --dark-bg: #0a0a0a;
-            --carbon-fiber: #1f1f1f;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        /* Navbar moderna */
-        .navbar {
-            background: rgba(0, 0, 0, 0.95) !important;
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        .navbar-brand img {
-            height: 70px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .navbar-brand:hover img {
-            transform: scale(1.05);
-        }
-        
-        .nav-link {
-            color: #fff !important;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 0.5rem 1rem !important;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 80%;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-        
-        .nav-item.active .nav-link {
-            color: var(--primary-color) !important;
-        }
-        
-        /* Hero Section */
+        /* Estilos específicos para agendar_cita.php */
         .page-header {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('imagenes/fondo.jpg') center/cover;
@@ -251,198 +179,23 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
         }
         
         .page-header h1 {
-            font-family: 'Oswald', sans-serif;
             font-size: 3rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
-        .page-header p {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Form Container */
         .form-container {
             background: rgba(30, 30, 30, 0.95);
             border: 2px solid var(--primary-color);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             padding: 40px;
             margin: 50px auto;
             max-width: 800px;
-            box-shadow: 0 10px 40px rgba(255, 77, 0, 0.2);
-        }
-        
-        .form-title {
-            font-family: 'Oswald', sans-serif;
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-        
-        .form-label {
-            font-weight: 500;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-        
-        .form-control, .form-select {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #444;
-            color: #fff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus, .form-select:focus {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 77, 0, 0.3);
-            color: #fff;
-        }
-        
-        .form-control::placeholder {
-            color: #aaa;
+            box-shadow: var(--shadow-lg);
         }
         
         .btn-agendar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b35 100%);
-            border: none;
-            color: #fff;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
             width: 100%;
             margin-top: 20px;
-        }
-        
-        .btn-agendar:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
-            background: linear-gradient(135deg, #ff6b35 0%, var(--primary-color) 100%);
-        }
-        
-        .btn-agendar:active {
-            transform: translateY(-1px);
-        }
-        
-        /* Alertas */
-        .alert-custom {
-            background: rgba(220, 53, 69, 0.2);
-            border: 2px solid #dc3545;
-            color: #ff6b6b;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-                        url('imagenes/fibra-carbono.jpeg') center/cover;
-            padding: 50px 0 30px;
-            margin-top: 80px;
-            border-top: 3px solid var(--primary-color);
-        }
-        
-        .footer-info p {
-            margin-bottom: 10px;
-            color: #ccc;
-        }
-        
-        .footer-social a {
-            display: inline-block;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            transform: scale(1.2);
-        }
-        
-        .footer-social img {
-            width: 50px;
-            height: 50px;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid #333;
-            color: #888;
-            font-size: 0.9rem;
-        }
-        
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .form-container {
-                padding: 25px;
-                margin: 30px 15px;
-            }
-            
-            .form-title {
-                font-size: 1.8rem;
-            }
-            
-            .navbar {
-                padding: 1rem;
-            }
-            
-            .navbar-brand img {
-                height: 50px;
-            }
         }
     </style>
 </head>

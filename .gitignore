@@ -2,18 +2,49 @@
 # Compiled and build artifacts
 *.pyc
 __pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
 # Dependencies
-vendor/
-composer.lock
-
-# Environment
+node_modules/
+venv/
+.venv/
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs
+# Build directories
+dist/
+build/
+target/
+.gradle/
+
+# Python specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Logs and temp files
 *.log
+*.tmp
+*.swp
+*.swo
 
 # Editors
 .vscode/
@@ -21,61 +52,7 @@ composer.lock
 *.swp
 *.swo
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
-
-# Build outputs
-dist/
-build/
-target/
-*.o
-*.obj
-*.out
-*.exe
-*.dll
-*.so
-*.a
-
-# Python specific
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git/
-
-# Web specific
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-public/uploads/
-storage/
-bootstrap/cache/
-
-# Database
-*.sqlite
-*.db
-
-# Temporary files
-*.tmp
-*.temp
-*~
 ```
-
-Wait, looking at the modified files again: only `agendar_cita.php` and `db.php` are PHP source files. No build artifacts, dependencies, or temporary files are present in the change list.
-
-(empty)
