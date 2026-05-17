@@ -3,188 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros - Talleres MORAD</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Sobre Nosotros - Talleres MORAD | Tu Taller de Confianza en Melilla</title>
+    <meta name="description" content="Conoce Talleres MORAD. Más de 20 años de experiencia en mecánica automotriz. Profesionales cualificados y tecnología de vanguardia.">
+    <meta name="keywords" content="taller mecánico melilla, sobre nosotros, experiencia mecánica, equipo taller">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sobre Nosotros - Talleres MORAD">
+    <meta property="og:description" content="Descubre nuestra historia y compromiso con la excelencia">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
+    <link rel="manifest" href="imagenes/site.webmanifest">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos generales */
-        body {
-            font-family: sans-serif;
-        }
-
-        .navbar {
-            background-color: #000;
-            transition: top 0.3s ease;
-        }
-
-        .navbar-dark .navbar-nav .nav-link {
-            color: #fff;
-        }
-
-        .section {
-            padding: 20px 0;
-            transition: background-color 0.3s ease;
-        }
-
-        .section.scrolled {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .about-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            border: 2px solid #fff;
-            border-radius: 10px;
-            padding: 30px; /* Padding inicial */
-            color: #fff;
-            margin: 0 20px; /* Margen lateral */
-        }
-
-        .about-container h2 {
-            color: #fff;
-        }
-
-        /* Media Queries */
-        @media (max-width: 1366px) {
-            .about-container {
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .about-container {
-                padding: 15px;
-                margin: 0 10px; /* Reducir margen lateral */
-            }
-
-            header.section h1 {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-container {
-                padding: 10px;
-                margin: 0 5px; /* Reducir margen lateral */
-            }
-
-            header.section h1 {
-                font-size: 20px;
-            }
-        }
+        :root { --primary-color: #ff4d00; --secondary-color: #ffffff; --dark-bg: #000000; --card-bg: rgba(30, 30, 30, 0.9); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: var(--secondary-color); background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('imagenes/fondo.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; }
+        .navbar { background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(10px); padding: 1rem 2rem; transition: all 0.3s ease; }
+        .navbar.scrolled { background: rgba(0, 0, 0, 0.95) !important; box-shadow: 0 2px 20px rgba(255, 77, 0, 0.3); }
+        .navbar-brand img { height: 80px; width: auto; transition: transform 0.3s ease; }
+        .navbar-brand img:hover { transform: scale(1.05); }
+        .navbar-nav .nav-link { color: var(--secondary-color) !important; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1.5rem !important; position: relative; transition: all 0.3s ease; }
+        .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--primary-color); transition: all 0.3s ease; transform: translateX(-50%); }
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after { width: 100%; }
+        .navbar-nav .nav-link:hover { color: var(--primary-color) !important; }
+        .navbar-toggler { border-color: var(--primary-color); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff4d00' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .page-header { padding: 150px 0 80px; text-align: center; background: linear-gradient(135deg, rgba(255, 77, 0, 0.3), rgba(0, 0, 0, 0.8)); }
+        .page-header h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 20px rgba(255, 77, 0, 0.8); margin-bottom: 1rem; }
+        .about-section { padding: 80px 0; }
+        .about-content { background: var(--card-bg); border: 2px solid rgba(255, 77, 0, 0.3); border-radius: 15px; padding: 3rem; backdrop-filter: blur(10px); margin-bottom: 3rem; }
+        .about-content h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1.5rem; text-align: center; }
+        .about-content p { line-height: 1.8; margin-bottom: 1.5rem; opacity: 0.9; }
+        .decálogo { list-style: none; counter-reset: item; }
+        .decálogo li { position: relative; padding-left: 3.5rem; margin-bottom: 1.5rem; line-height: 1.6; }
+        .decálogo li::before { counter-increment: item; content: counter(item); position: absolute; left: 0; top: 0; width: 2.5rem; height: 2.5rem; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'Oswald', sans-serif; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .value-card { background: rgba(255, 77, 0, 0.1); border: 2px solid rgba(255, 77, 0, 0.3); border-radius: 15px; padding: 2rem; text-align: center; transition: all 0.3s ease; }
+        .value-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(255, 77, 0, 0.3); }
+        .value-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .value-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        footer { background: rgba(0, 0, 0, 0.95); padding: 50px 0 20px; border-top: 2px solid rgba(255, 77, 0, 0.3); }
+        footer p { margin-bottom: 0.5rem; opacity: 0.9; }
+        footer a { color: var(--primary-color); text-decoration: none; }
+        footer a:hover { color: white; }
+        .footer-bottom { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.9rem; opacity: 0.7; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; z-index: 1000; animation: pulse 2s infinite; }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @media (max-width: 768px) { .page-header h1 { font-size: 2.5rem; } .navbar { padding: 1rem; } .about-content { padding: 1.5rem; } .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.5rem; } }
     </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="index.html">
-        <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" width="100" height="100">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="servicios.html">Servicios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="agendar_cita.php">Agendar Cita</a>
-            </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link active" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a></li>
+                <li class="nav-item"><a class="nav-link" href="agendar_cita.php" style="background: var(--primary-color); color: white; padding: 0.5rem 1.5rem; border-radius: 30px; text-decoration: none;">Agendar Cita</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
-
-<header class="section">
-    <div>
-        <h1>Sobre Nosotros</h1>
-    </div>
+<header class="page-header">
+    <div class="container"><h1>Sobre Nosotros</h1><p>Tu taller de confianza en Melilla</p></div>
 </header>
-
-<section class="container my-5">
-    <div class="about-container"> 
-        <h2 class="text-center">Talleres Morad Melilla: Un compromiso con la excelencia</h2>
-        <p>En Talleres Morad Melilla, la pasión por el automóvil se traduce en un compromiso inquebrantable con la calidad y la satisfacción del cliente. Nuestro decálogo de servicio refleja los valores que guían cada una de nuestras acciones:</p>
-        <ol>
-            <li>Experiencia y profesionalidad: Contamos con un equipo de mecánicos altamente cualificados y con amplia experiencia en el sector.</li>
-            <li>Diagnóstico preciso: Utilizamos tecnología de vanguardia para identificar con precisión cualquier problema en su vehículo.</li>
-            <li>Reparaciones garantizadas: Ofrecemos garantía en todas nuestras reparaciones, asegurando su tranquilidad.</li>
-            <li>Transparencia y honestidad: Le informamos detalladamente sobre el estado de su vehículo y las reparaciones necesarias.</li>
-            <li>Precios competitivos: Ofrecemos tarifas justas y transparentes, sin sorpresas.</li>
-            <li>Puntualidad y eficiencia: Cumplimos con los plazos acordados, valorando su tiempo.</li>
-            <li>Atención personalizada: Le brindamos un trato cercano y amable, resolviendo todas sus dudas.</li>
-            <li>Compromiso con el medio ambiente: Implementamos prácticas responsables para minimizar nuestro impacto ambiental.</li>
-            <li>Mejora continua: Buscamos constantemente la excelencia en nuestros servicios, innovando y adaptándonos a sus necesidades.</li>
-            <li>Confianza y fidelidad: Trabajamos para construir una relación de confianza a largo plazo con nuestros clientes.</li>
-        </ol>
-        <p class="text-center">En Talleres Morad Melilla, su vehículo está en las mejores manos. Confíe en nosotros para el mantenimiento y reparación de su automóvil.</p>
+<section class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <h2>Talleres Morad Melilla: Un compromiso con la excelencia</h2>
+            <p>En Talleres Morad Melilla, la pasión por el automóvil se traduce en un compromiso inquebrantable con la calidad y la satisfacción del cliente. Nuestro decálogo de servicio refleja los valores que guían cada una de nuestras acciones:</p>
+            <ol class="decálogo">
+                <li><strong>Experiencia y profesionalidad:</strong> Contamos con un equipo de mecánicos altamente cualificados y con amplia experiencia en el sector.</li>
+                <li><strong>Diagnóstico preciso:</strong> Utilizamos tecnología de vanguardia para identificar con precisión cualquier problema en su vehículo.</li>
+                <li><strong>Reparaciones garantizadas:</strong> Ofrecemos garantía en todas nuestras reparaciones, asegurando su tranquilidad.</li>
+                <li><strong>Transparencia y honestidad:</strong> Le informamos detalladamente sobre el estado de su vehículo y las reparaciones necesarias.</li>
+                <li><strong>Precios competitivos:</strong> Ofrecemos tarifas justas y transparentes, sin sorpresas.</li>
+                <li><strong>Puntualidad y eficiencia:</strong> Cumplimos con los plazos acordados, valorando su tiempo.</li>
+                <li><strong>Atención personalizada:</strong> Le brindamos un trato cercano y amable, resolviendo todas sus dudas.</li>
+                <li><strong>Compromiso con el medio ambiente:</strong> Implementamos prácticas responsables para minimizar nuestro impacto ambiental.</li>
+                <li><strong>Mejora continua:</strong> Buscamos constantemente la excelencia en nuestros servicios, innovando y adaptándonos a sus necesidades.</li>
+                <li><strong>Confianza y fidelidad:</strong> Trabajamos para construir una relación de confianza a largo plazo con nuestros clientes.</li>
+            </ol>
+            <p style="text-align: center; font-size: 1.2rem; margin-top: 2rem;">En Talleres Morad Melilla, su vehículo está en las mejores manos. Confíe en nosotros para el mantenimiento y reparación de su automóvil.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card"><i class="fas fa-certificate"></i><h3>Calidad Garantizada</h3><p>Servicios certificados y garantizados</p></div>
+            <div class="value-card"><i class="fas fa-users"></i><h3>Equipo Experto</h3><p>Profesionales altamente cualificados</p></div>
+            <div class="value-card"><i class="fas fa-tools"></i><h3>Tecnología</h3><p>Equipos de diagnóstico avanzados</p></div>
+            <div class="value-card"><i class="fas fa-handshake"></i><h3>Confianza</h3><p>Relación transparente con clientes</p></div>
+        </div>
     </div>
 </section>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-    window.onscroll = function() {
-        let sections = document.querySelectorAll('.section');
-        let scrollPosition = window.pageYOffset;
-
-        sections.forEach((section) => {
-            let sectionTop = section.offsetTop - 50;
-            if (scrollPosition >= sectionTop) {
-                section.classList.add('scrolled');
-            } else {
-                section.classList.remove('scrolled');
-            }
-        });
-    };
-</script>
-
-<!-- Footer -->
-<footer class="bg-dark text-white py-4">
+<footer>
     <div class="container">
-        <div class="row text-center text-md-left align-items-center">
-            <!-- Primera columna: Dirección y Teléfono -->
-            <div class="col-md-4 mb-3 mb-md-0">
-                <p class="mb-1">Dirección: Calle de la Dalia, 39 - 52006 Melilla</p>
-                <p class="mb-0">Teléfono: +34 699883683</p>
-            </div>
-            
-            <!-- Segunda columna: Icono de WhatsApp (Opcional) -->
-            <div class="col-md-4 text-center mb-3 mb-md-0">
-                <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad..." target="_self">
-                    <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" class="img-fluid" style="width: 50px; height: 50px;">
-                </a>
-            </div>
-      
-            <!-- Tercera columna: Correo Electrónico -->
-            <div class="col-md-4 text-md-right">
-                <p class="mb-0">Correo electrónico: talleresmoradmelilla@hotmail.com</p>
-            </div>
+        <div class="row">
+            <div class="col-md-4 mb-4"><h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">TALLERES MORAD</h5><p><i class="fas fa-map-marker-alt me-2"></i> Calle de la Dalia, 39 - 52006 Melilla</p><p><i class="fas fa-phone me-2"></i> +34 699 883 683</p></div>
+            <div class="col-md-4 mb-4 text-center"><h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">CONTACTO</h5><a href="https://api.whatsapp.com/send?phone=34699883683" target="_blank" class="d-inline-block mb-2"><i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366;"></i></a><p><i class="fas fa-envelope me-2"></i> talleresmoradmelilla@hotmail.com</p></div>
+            <div class="col-md-4 mb-4 text-md-end"><h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">ENLACES</h5><p><a href="index.html">Inicio</a></p><p><a href="servicios.html">Servicios</a></p><p><a href="agendar_cita.php">Agendar Cita</a></p></div>
         </div>
-      
-        <!-- Marca y créditos -->
-        <div class="row mt-3">
-            <div class="col text-center">
-                <p class="mb-0">2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
-            </div>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p></div>
     </div>
 </footer>
-</div>
+<a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Quiero%20más%20información%20sobre%20el%20taller" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>window.addEventListener('scroll', () => { const navbar = document.querySelector('.navbar'); if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } });</script>
 </body>
 </html>

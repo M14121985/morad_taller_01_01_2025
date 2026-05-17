@@ -1,211 +1,513 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - Talleres MORAD</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Servicios - Talleres MORAD | Mecánica General en Melilla</title>
+    <meta name="description" content="Servicios de mecánica general en Talleres MORAD. Diagnóstico, frenos, transmisión, electricidad y más. ¡Tu coche en las mejores manos!">
+    <meta name="keywords" content="servicios taller mecánico, reparación coches melilla, cambio aceite, frenos, transmisión, diagnóstico">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Servicios - Talleres MORAD">
+    <meta property="og:description" content="Especialistas en todos los servicios de mecánica automotriz">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
+    <link rel="manifest" href="imagenes/site.webmanifest">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos generales */
+        :root {
+            --primary-color: #ff4d00;
+            --secondary-color: #ffffff;
+            --dark-bg: #000000;
+            --card-bg: rgba(30, 30, 30, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--secondary-color);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('imagenes/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
-
+        
+        /* Navbar moderna */
         .navbar {
-            background-color: #000;
-            transition: top 0.3s ease;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
         }
-
-        .navbar-dark .navbar-nav .nav-link {
-            color: #fff;
+        
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95) !important;
+            box-shadow: 0 2px 20px rgba(255, 77, 0, 0.3);
         }
-
-        .section {
-            padding: 20px 0;
-            transition: background-color 0.3s ease;
+        
+        .navbar-brand img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
-
-        .section.scrolled {
-            background-color: #000;
-            color: #fff;
+        
+        .navbar-brand img:hover {
+            transform: scale(1.05);
         }
-
-        footer {
-            background-color: #000;
-            color: #fff;
+        
+        .navbar-nav .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1.5rem !important;
+            position: relative;
+            transition: all 0.3s ease;
         }
-
-        /* Estilos para el contenedor de servicios */
-        .services-container {
-            background-color: #000; /* Fondo negro */
-            color: #fff; /* Texto blanco */
-            padding: 20px;
-            border-radius: 10px;
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff4d00' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Header */
+        .page-header {
+            padding: 150px 0 80px;
             text-align: center;
-            border: 2px solid #fff; /* Borde blanco */
+            background: linear-gradient(135deg, rgba(255, 77, 0, 0.3), rgba(0, 0, 0, 0.8));
         }
-
-        .services-container h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
+        
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 77, 0, 0.8);
+            margin-bottom: 1rem;
         }
-
-        .services-container p {
-            font-size: 18px;
-            margin-bottom: 10px;
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
-
-        /* Media Queries */
-        /* Para ordenadores portátiles */
-        @media (max-width: 1366px) {
-            .services-container h2 {
-                font-size: 24px;
-            }
-            .services-container p {
-                font-size: 16px;
-            }
+        
+        /* Services Grid */
+        .services-section {
+            padding: 80px 0;
         }
-
-        /* Para tabletas */
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 77, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 77, 0, 0.9), rgba(0, 0, 0, 0.9));
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-custom {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-custom:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 50px 0 20px;
+            border-top: 2px solid rgba(255, 77, 0, 0.3);
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .services-container h2 {
-                font-size: 22px;
+            .page-header h1 {
+                font-size: 2.5rem;
             }
-            .services-container p {
-                font-size: 15px;
+            
+            .section-title {
+                font-size: 2rem;
             }
-        }
-
-        /* Para iPhones */
-        @media (max-width: 480px) {
-            .services-container h2 {
-                font-size: 20px;
+            
+            .navbar {
+                padding: 1rem;
             }
-            .services-container p {
-                font-size: 14px;
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="index.html">
-        <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" width="100" height="100">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="servicios.html">Servicios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="agendar_cita.php">Agendar Cita</a>
-            </li>
-        </ul>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="servicios.html">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="terminos-y-condiciones.html">Términos y Privacidad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-custom ms-2" href="agendar_cita.php" style="padding: 0.5rem 1.5rem; border-radius: 30px;">Agendar Cita</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-<header class="section">
-    <div>
-        <h1>Servicios</h1>
+<!-- Header -->
+<header class="page-header">
+    <div class="container">
+        <h1>Nuestros Servicios</h1>
+        <p>Especialistas en todos los aspectos de la mecánica automotriz</p>
     </div>
 </header>
 
-<section class="container my-5">
-    <div class="services-container">
-        <h2>Todos los Servicios de Mecánica General</h2>
-        <p>Diagnóstico y reparación de motores.</p>
-        <p>Cambio de aceite y filtros.</p>
-        <p>Revisión y reparación de frenos.</p>
-        <p>Mantenimiento de transmisión y caja de cambios.</p>
-        <p>Sistema de escape y silenciadores.</p>
-        <p>Alineación y balanceo de neumáticos.</p>
-        <p>Reparación del sistema eléctrico.</p>
-        <p>Servicios de aire acondicionado automotriz.</p>
-        <p>Inspección y reparación de suspensión.</p>
-        <p>Instalación y mantenimiento de baterías.</p>
-        <p>Cambio de correas y cadenas de distribución.</p>
-        <p>Servicio de diagnóstico computarizado.</p>
+<!-- Services Grid -->
+<section class="services-section">
+    <div class="container">
+        <h2 class="section-title">Servicios Completos</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-engine service-icon"></i>
+                    <h3>Motor y Diagnóstico</h3>
+                    <p>Diagnóstico computerizado y reparación integral de motores. Detectamos y solucionamos cualquier avería con precisión.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-oil-can service-icon"></i>
+                    <h3>Cambio de Aceite</h3>
+                    <p>Mantenimiento preventivo con aceites de primera calidad. Incluye revisión y cambio de filtros.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-disc-brake service-icon"></i>
+                    <h3>Sistema de Frenos</h3>
+                    <p>Revisión, reparación y sustitución de frenos. Tu seguridad es nuestra prioridad.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-cogs service-icon"></i>
+                    <h3>Transmisión</h3>
+                    <p>Mantenimiento y reparación de cajas de cambio manuales y automáticas.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-wind service-icon"></i>
+                    <h3>Escape y Silenciadores</h3>
+                    <p>Reparación y sustitución de sistemas de escape. Cumplimos con todas las normativas.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-car-side service-icon"></i>
+                    <h3>Alineación y Balanceo</h3>
+                    <p>Alineación de dirección y balanceo de ruedas para un mejor rendimiento y seguridad.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-bolt service-icon"></i>
+                    <h3>Electricidad</h3>
+                    <p>Reparación completa del sistema eléctrico. Baterías, alternadores, arranque y electrónica.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-snowflake service-icon"></i>
+                    <h3>Aire Acondicionado</h3>
+                    <p>Carga, reparación y mantenimiento del sistema de climatización de tu vehículo.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Suspensión</h3>
+                    <p>Revisión y reparación de amortiguadores, muelles y todo el sistema de suspensión.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-car-battery service-icon"></i>
+                    <h3>Baterías</h3>
+                    <p>Venta, instalación y mantenimiento de baterías. Pruebas de carga y diagnóstico.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-link service-icon"></i>
+                    <h3>Distribución</h3>
+                    <p>Cambio de correas y cadenas de distribución. Prevención de averías graves.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <i class="fas fa-laptop-medical service-icon"></i>
+                    <h3>Diagnóstico Computerizado</h3>
+                    <p>Equipos de última generación para detectar cualquier fallo electrónico.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>¿Necesitas un Servicio Especial?</h2>
+        <p class="mb-4">Contáctanos y te asesoraremos personalmente</p>
+        <a href="contacto.html" class="btn-custom">Contactar Ahora</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">TALLERES MORAD</h5>
+                <p><i class="fas fa-map-marker-alt me-2"></i> Calle de la Dalia, 39 - 52006 Melilla</p>
+                <p><i class="fas fa-phone me-2"></i> +34 699 883 683</p>
+            </div>
+            <div class="col-md-4 mb-4 text-center">
+                <h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">CONTACTO</h5>
+                <a href="https://api.whatsapp.com/send?phone=34699883683" target="_blank" class="d-inline-block mb-2">
+                    <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366;"></i>
+                </a>
+                <p><i class="fas fa-envelope me-2"></i> talleresmoradmelilla@hotmail.com</p>
+            </div>
+            <div class="col-md-4 mb-4 text-md-end">
+                <h5 style="color: var(--primary-color); font-family: 'Oswald', sans-serif; margin-bottom: 1rem;">ENLACES</h5>
+                <p><a href="index.html">Inicio</a></p>
+                <p><a href="servicios.html">Servicios</a></p>
+                <p><a href="agendar_cita.php">Agendar Cita</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20vuestros%20servicios" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    window.onscroll = function() {
-        let sections = document.querySelectorAll('.section');
-        let scrollPosition = window.pageYOffset;
-
-        sections.forEach((section) => {
-            let sectionTop = section.offsetTop - 50;
-            if (scrollPosition >= sectionTop) {
-                section.classList.add('scrolled');
-            } else {
-                section.classList.remove('scrolled');
-            }
-        });
-    };
-</script>
-<script>
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
         const navbar = document.querySelector('.navbar');
-
-        const headerHeight = header.offsetHeight;
-        navbar.style.top = `${headerHeight}px`;
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
 </script>
 
-<footer class="bg-dark text-white py-4">
-    <div class="container">
-      <div class="row text-center text-md-left align-items-center">
-        
-        <!-- Primera columna: Dirección y Teléfono -->
-        <div class="col-md-4 mb-3 mb-md-0">
-          <p class="mb-1">Dirección: Calle de la Dalia, 39 - 52006 Melilla</p>
-          <p class="mb-0">Teléfono: +34 699883683</p>
-        </div>
-        
-        <!-- Segunda columna: Icono de WhatsApp (Opcional) -->
-        <div class="col-md-4 text-center mb-3 mb-md-0">
-          <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad..." target="_self">
-            <img src="imagenes/whatsapp-logo.png" alt="WhatsApp" class="img-fluid" style="width: 50px; height: 50px;">
-          </a>
-        </div>
-  
-        <!-- Tercera columna: Correo Electrónico -->
-        <div class="col-md-4 text-md-right">
-          <p class="mb-0">Correo electrónico: talleresmoradmelilla@hotmail.com</p>
-        </div>
-      </div>
-  
-      <!-- Marca y créditos -->
-      <div class="row mt-3">
-        <div class="col text-center">
-          <p class="mb-0">2024 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
 </body>
 </html>
