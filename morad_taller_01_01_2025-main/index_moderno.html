@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talleres MORAD - Mecánica General en Melilla</title>
+    <meta name="description" content="Talleres MORAD en Melilla. Especialistas en mecánica general, diagnóstico, frenos, distribución, chapa y pintura. ¡Agenda tu cita!">
+    <meta name="keywords" content="taller mecánico, melilla, reparación coches, mecánica general, frenos, distribución, chapa y pintura">
+    <meta name="author" content="Talleres MORAD">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="Talleres MORAD - Mecánica General en Melilla">
+    <meta property="og:description" content="Especialistas en reparación y mantenimiento de vehículos. ¡Tu coche en las mejores manos!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://talleresmoradmecanica.es/">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
+    <link rel="manifest" href="imagenes/site.webmanifest">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        :root {
+            --primary-color: #ff4d00;
+            --secondary-color: #ffffff;
+            --dark-bg: #000000;
+            --card-bg: rgba(30, 30, 30, 0.9);
+            --text-glow: 0 0 20px rgba(255, 77, 0, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--secondary-color);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imagenes/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Navbar moderna */
+        .navbar {
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95) !important;
+            box-shadow: 0 2px 20px rgba(255, 77, 0, 0.3);
+        }
+        
+        .navbar-brand img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1.5rem !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+            text-shadow: var(--text-glow);
+        }
+        
+        .navbar-toggler {
+            border-color: var(--primary-color);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 77, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            text-shadow: 0 0 30px rgba(255, 77, 0, 0.8),
+                         0 0 60px rgba(255, 77, 0, 0.6),
+                         0 0 90px rgba(255, 77, 0, 0.4);
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn-morad {
+            background: linear-gradient(135deg, var(--primary-color), #ff6b35);
+            color: var(--secondary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 77, 0, 0.4);
+        }
+        
+        .btn-morad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.6);
+            color: var(--secondary-color);
+        }
+        
+        /* Servicios Cards */
+        .services-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            text-shadow: 0 0 20px rgba(255, 77, 0, 0.6);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 77, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(255, 77, 0, 0.4),
+                        0 0 60px rgba(255, 77, 0, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255, 77, 0, 0.6);
+        }
+        
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Características */
+        .features-section {
+            padding: 5rem 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: rgba(255, 77, 0, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-right: 1.5rem;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .feature-text h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-text p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(255, 77, 0, 0.9), rgba(255, 107, 53, 0.9));
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-light-custom {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-light-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95));
+            padding: 3rem 0 1.5rem;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .footer-logo {
+            height: 100px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h5 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 77, 0, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 45px;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* WhatsApp Button Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            
+            .navbar-brand img {
+                height: 60px;
+            }
+            
+            .hero-section {
+                padding-top: 60px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index_moderno.html">
+                <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index_moderno.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="terminos-y-condiciones.html">Privacidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-morad px-4" href="agendar_cita.php">Agendar Cita</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title">Talleres MORAD</h1>
+            <p class="hero-subtitle">Expertos en Mecánica General en Melilla</p>
+            <div class="mt-4">
+                <a href="agendar_cita.php" class="btn btn-morad me-3">
+                    <i class="fas fa-calendar-check me-2"></i>Agendar Cita
+                </a>
+                <a href="tel:+34699883683" class="btn btn-light-custom">
+                    <i class="fas fa-phone me-2"></i>Llamar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Destacados -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-car-crash service-icon"></i>
+                        <h3>Diagnóstico</h3>
+                        <p>Diagnóstico computarizado avanzado para detectar cualquier avería en tu vehículo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-oil-can service-icon"></i>
+                        <h3>Cambio de Aceite</h3>
+                        <p>Mantenimiento preventivo con aceites de máxima calidad para prolongar la vida de tu motor.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-cogs service-icon"></i>
+                        <h3>Distribución</h3>
+                        <p>Revisión y cambio de correas y cadenas de distribución con garantía.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-disc service-icon"></i>
+                        <h3>Frenos</h3>
+                        <p>Reparación y mantenimiento del sistema de frenos para tu seguridad.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-wrench service-icon"></i>
+                        <h3>Mecánica General</h3>
+                        <p>Reparaciones completas de motor, transmisión y sistemas mecánicos.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-spray-can service-icon"></i>
+                        <h3>Chapa y Pintura</h3>
+                        <p>Restauración de carrocería con acabados profesionales.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-snowflake service-icon"></i>
+                        <h3>Aire Acondicionado</h3>
+                        <p>Carga, reparación y mantenimiento del sistema de climatización.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="service-card">
+                        <i class="fas fa-car-battery service-icon"></i>
+                        <h3>Electricidad</h3>
+                        <p>Diagnóstico y reparación de sistemas eléctricos y electrónicos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="servicios.html" class="btn btn-morad">Ver Todos los Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Qué Elegirnos -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-item">
+                        <i class="fas fa-certificate feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Profesionales Certificados</h4>
+                            <p>Mecánicos especializados con años de experiencia.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-tools feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Tecnología Avanzada</h4>
+                            <p>Equipamiento de última generación para diagnósticos precisos.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Servicio Rápido</h4>
+                            <p>Reparaciones eficientes sin comprometer la calidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-item">
+                        <i class="fas fa-euro-sign feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Precios Competitivos</h4>
+                            <p>La mejor relación calidad-precio del mercado.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Garantía Asegurada</h4>
+                            <p>Todas nuestras reparaciones cuentan con garantía.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-smile feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Atención Personalizada</h4>
+                            <p>Trato cercano y asesoramiento personalizado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para Agendar tu Cita?</h2>
+            <p>No esperes más. Reserva tu cita hoy mismo y recibe el mejor servicio para tu vehículo.</p>
+            <a href="agendar_cita.php" class="btn btn-light-custom btn-lg">
+                <i class="fas fa-calendar-alt me-2"></i>Reservar Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="footer-section">
+                        <img src="imagenes/logo morad 2.jpg" alt="Talleres MORAD" class="footer-logo">
+                        <p>Tu taller de confianza en Melilla. Especialistas en mecánica general con años de experiencia cuidando de tu vehículo.</p>
+                        <div class="social-icons mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="footer-section">
+                        <h5>Contacto</h5>
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Calle de la Dalia, 39 - 52006 Melilla</p>
+                        <p><i class="fas fa-phone me-2"></i><a href="tel:+34699883683">+34 699 883 683</a></p>
+                        <p><i class="fas fa-envelope me-2"></i><a href="mailto:talleresmoradmelilla@hotmail.com">talleresmoradmelilla@hotmail.com</a></p>
+                        <p><i class="fas fa-clock me-2"></i>Lunes a Viernes: 8:00 - 20:00</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="footer-section">
+                        <h5>Enlaces Rápidos</h5>
+                        <a href="index_moderno.html">Inicio</a>
+                        <a href="servicios.html">Servicios</a>
+                        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+                        <a href="contacto.html">Contacto</a>
+                        <a href="agendar_cita.php">Agendar Cita</a>
+                        <a href="terminos-y-condiciones.html">Términos y Privacidad</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">&copy; 2025 Talleres MORAD. Todos los derechos reservados. | Diseño web by zubimendi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=34699883683&text=Hola!%20Bienvenido%20a%20Talleres%20Morad.%20¿En%20qué%20podemos%20ayudarte?" 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
